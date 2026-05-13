@@ -79,7 +79,7 @@ function abrirProjeto(id) {
 function fecharProjeto(e, force) {
   if (!force && e && e.target !== document.getElementById('projModal')) return;
   document.getElementById('projModal').classList.remove('open');
-  document.body.style.overflow = '';
+  setTimeout(() => { document.body.style.overflow = ''; }, 300);
 }
 
 document.addEventListener('keydown', e => {
