@@ -56,6 +56,16 @@ const projetos = {
     techs: ['Node.js', 'Express', 'JavaScript', 'CSS', 'REST API', 'JWT'],
     live: 'https://barberhub-production-a848.up.railway.app',
     repo: 'https://github.com/DeAndrade15/barberhub',
+  },
+  patrickdaher: {
+    nome: 'Patrick Daher',
+    tag: 'Site Institucional',
+    status: '● Live',
+    imagem: 'img/patrickdaher-thumb.png',
+    descricao: 'Site institucional para Patrick Daher, especialista em marketing e audiovisual. Apresenta portfólio de vídeos, artes e marcas atendidas, com design premium dark/light mode, animações fluidas e integração com IA Gemini. Projeto colaborativo.',
+    techs: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Express', 'Gemini AI'],
+    live: 'https://opatrickdaher.vercel.app',
+    repo: 'https://github.com/ptkdaherr/opatrickdaher',
   }
 };
 
