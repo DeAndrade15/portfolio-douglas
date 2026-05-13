@@ -101,18 +101,24 @@ document.querySelectorAll('.proj-card[data-slides]').forEach(card => {
   const slides = JSON.parse(card.dataset.slides);
   if (slides.length < 2) return;
 
-  const img   = card.querySelector('.proj-thumb img');
-  const dotsEl = card.querySelector('.proj-dots');
+  const img      = card.querySelector('.proj-thumb img');
+  const dotsEl   = card.querySelector('.proj-dots');
+  const progress = card.querySelector('.proj-progress');
   let current = 0;
   let timer   = null;
 
-  // cria dots
   slides.forEach((_, i) => {
     const d = document.createElement('span');
     d.className = 'proj-dot' + (i === 0 ? ' active' : '');
     d.addEventListener('click', e => { e.stopPropagation(); goSlide(i); });
     dotsEl.appendChild(d);
   });
+
+  function resetProgress() {
+    progress.classList.remove('running');
+    void progress.offsetWidth; // reflow para reiniciar animação
+    progress.classList.add('running');
+  }
 
   function goSlide(n) {
     if (n === current) return;
@@ -124,18 +130,22 @@ document.querySelectorAll('.proj-card[data-slides]').forEach(card => {
       dotsEl.querySelectorAll('.proj-dot').forEach((d, i) =>
         d.classList.toggle('active', i === current)
       );
+      resetProgress();
     }, 200);
   }
 
   function startAuto() {
+    resetProgress();
     timer = setInterval(() => goSlide(current + 1), 2000);
   }
 
   function stopAuto() {
     clearInterval(timer);
     timer = null;
+    progress.classList.remove('running');
+    goSlide(0);
   }
 
   card.addEventListener('mouseenter', startAuto);
-  card.addEventListener('mouseleave', () => { stopAuto(); goSlide(0); });
+  card.addEventListener('mouseleave', stopAuto);
 });
