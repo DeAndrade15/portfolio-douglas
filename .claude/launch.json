@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3000", "D:\\AI Projects\\portfolio-douglas"],
+      "port": 3000
+    }
+  ]
+}

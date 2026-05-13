@@ -95,3 +95,47 @@ function fecharProjeto(e, force) {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') fecharProjeto(null, true);
 });
+
+// Slideshow nos cards
+document.querySelectorAll('.proj-card[data-slides]').forEach(card => {
+  const slides = JSON.parse(card.dataset.slides);
+  if (slides.length < 2) return;
+
+  const img   = card.querySelector('.proj-thumb img');
+  const dotsEl = card.querySelector('.proj-dots');
+  let current = 0;
+  let timer   = null;
+
+  // cria dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('span');
+    d.className = 'proj-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', e => { e.stopPropagation(); goSlide(i); });
+    dotsEl.appendChild(d);
+  });
+
+  function goSlide(n) {
+    if (n === current) return;
+    img.classList.add('fading');
+    setTimeout(() => {
+      current = (n + slides.length) % slides.length;
+      img.src = slides[current];
+      img.classList.remove('fading');
+      dotsEl.querySelectorAll('.proj-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === current)
+      );
+    }, 200);
+  }
+
+  function startAuto() {
+    timer = setInterval(() => goSlide(current + 1), 2000);
+  }
+
+  function stopAuto() {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  card.addEventListener('mouseenter', startAuto);
+  card.addEventListener('mouseleave', () => { stopAuto(); goSlide(0); });
+});

@@ -636,13 +636,6 @@ h2.center { text-align: center; }
   background: var(--bg);
 }
 
-.proj-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
 .proj-card:hover .proj-thumb img {
   transform: scale(1.04);
 }
@@ -650,10 +643,51 @@ h2.center { text-align: center; }
 .proj-thumb-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.55) 100%);
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.65) 100%);
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
   padding: 12px 14px;
+}
+
+/* DOTS */
+.proj-dots {
+  display: flex;
+  gap: 5px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.proj-card:hover .proj-dots {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.proj-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transition: background 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+}
+
+.proj-dot.active {
+  background: #fff;
+  transform: scale(1.25);
+}
+
+/* Fade entre slides */
+.proj-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.proj-thumb img.fading {
+  opacity: 0;
 }
 
 .proj-status {
