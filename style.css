@@ -49,8 +49,8 @@ body {
   }
 
   .cursor-dot.hovering {
-    width: 52px;
-    height: 52px;
+    width: 36px;
+    height: 36px;
   }
 
   .cursor-dot.clicking {
@@ -801,7 +801,7 @@ h2.center { text-align: center; }
   flex-wrap: wrap;
 }
 
-.proj-techs span {
+.proj-techs span:not(.tech-badge) {
   font-size: 0.72rem;
   font-weight: 500;
   color: var(--muted);
