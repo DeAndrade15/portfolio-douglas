@@ -25,7 +25,7 @@ window.addEventListener('scroll', () => {
 });
 
 // Fade-up on scroll for cards and sections
-const fadeEls = document.querySelectorAll('.card, .projeto-card, .sobre-stat, .passo');
+const fadeEls = document.querySelectorAll('.card, .proj-card, .sobre-stat, .passo');
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
@@ -43,4 +43,45 @@ fadeEls.forEach(el => {
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   fadeObserver.observe(el);
+});
+
+// Dados dos projetos
+const projetos = {
+  barberhub: {
+    nome: 'BarberHub',
+    tag: 'Sistema Web',
+    status: '● Live',
+    imagem: 'img/barberhub-thumb.jpg',
+    descricao: 'Sistema de agendamento online para barbearias, com fluxo mobile-first em 3 etapas: escolha de serviços, seleção de data e horário, e confirmação com dados do cliente. Suporte a multi-serviços, cálculo automático de disponibilidade e painel admin completo com dashboard, agenda e gestão de clientes.',
+    techs: ['Node.js', 'Express', 'JavaScript', 'CSS', 'REST API', 'JWT'],
+    live: 'https://barberhub-production-a848.up.railway.app',
+    repo: 'https://github.com/DeAndrade15/barberhub',
+  }
+};
+
+function abrirProjeto(id) {
+  const p = projetos[id];
+  if (!p) return;
+  document.getElementById('modalImg').src     = p.imagem;
+  document.getElementById('modalImg').alt     = p.nome;
+  document.getElementById('modalTag').textContent    = p.tag;
+  document.getElementById('modalStatus').textContent = p.status;
+  document.getElementById('modalNome').textContent   = p.nome;
+  document.getElementById('modalDesc').textContent   = p.descricao;
+  document.getElementById('modalLive').href  = p.live;
+  document.getElementById('modalRepo').href  = p.repo;
+  const techs = document.getElementById('modalTechs');
+  techs.innerHTML = p.techs.map(t => `<span>${t}</span>`).join('');
+  document.getElementById('projModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharProjeto(e, force) {
+  if (!force && e && e.target !== document.getElementById('projModal')) return;
+  document.getElementById('projModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') fecharProjeto(null, true);
 });
