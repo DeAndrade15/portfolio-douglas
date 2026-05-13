@@ -697,6 +697,36 @@ h2.center { text-align: center; }
   border-radius: 6px;
 }
 
+.projetos-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  margin-top: 52px;
+  gap: 12px;
+}
+
+.projetos-empty-icon {
+  color: var(--muted);
+  opacity: 0.4;
+  margin-bottom: 4px;
+}
+
+.projetos-empty-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.projetos-empty-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
 /* CONTATO */
 .contato {
   padding: 120px 0;
