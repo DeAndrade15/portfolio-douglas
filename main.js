@@ -1,3 +1,76 @@
+// CURSOR PERSONALIZADO
+const cursorDot  = document.getElementById('cursorDot');
+const cursorRing = document.getElementById('cursorRing');
+
+if (cursorDot && cursorRing && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursorDot.style.left = mx + 'px';
+    cursorDot.style.top  = my + 'px';
+  });
+
+  (function loop() {
+    rx += (mx - rx) * 0.13;
+    ry += (my - ry) * 0.13;
+    cursorRing.style.left = rx + 'px';
+    cursorRing.style.top  = ry + 'px';
+    requestAnimationFrame(loop);
+  })();
+
+  document.addEventListener('mousedown', () => cursorRing.classList.add('clicking'));
+  document.addEventListener('mouseup',   () => cursorRing.classList.remove('clicking'));
+  document.addEventListener('mouseleave', () => {
+    cursorDot.style.opacity  = '0';
+    cursorRing.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    cursorDot.style.opacity  = '1';
+    cursorRing.style.opacity = '1';
+  });
+
+  document.querySelectorAll('a, button, .proj-card, [onclick], select, input, textarea, .proj-dot, .proj-modal-close').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursorDot.classList.add('hovering');
+      cursorRing.classList.add('hovering');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursorDot.classList.remove('hovering');
+      cursorRing.classList.remove('hovering');
+    });
+  });
+}
+
+// TECH BADGES
+const techMap = {
+  'Node.js':      { icon: 'devicon-nodejs-plain',          color: '#6cc24a' },
+  'Express':      { icon: 'devicon-express-original',      color: '#9ca3af' },
+  'JavaScript':   { icon: 'devicon-javascript-plain',      color: '#f7df1e' },
+  'CSS':          { icon: 'devicon-css3-plain',             color: '#1572b6' },
+  'React':        { icon: 'devicon-react-original',        color: '#61dafb' },
+  'TypeScript':   { icon: 'devicon-typescript-plain',      color: '#3178c6' },
+  'Tailwind CSS': { icon: 'devicon-tailwindcss-original',  color: '#06b6d4' },
+  'Vite':         { icon: 'devicon-vitejs-plain',           color: '#646cff' },
+  'REST API':     { icon: 'devicon-fastapi-plain',          color: '#f59e0b' },
+  'JWT':          { icon: null,                             color: '#e879f9' },
+  'Gemini AI':    { icon: null,                             color: '#8e75b2' },
+};
+
+function renderTechBadge(name) {
+  const t = techMap[name] || { color: '#6b6b88' };
+  const ico = t.icon ? `<i class="${t.icon}"></i>` : '';
+  return `<span class="tech-badge" style="--tc:${t.color}">${ico}${name}</span>`;
+}
+
+function upgradeTechSpans(container) {
+  container.querySelectorAll('.proj-techs span:not(.tech-badge)').forEach(span => {
+    span.outerHTML = renderTechBadge(span.textContent.trim());
+  });
+}
+
+document.querySelectorAll('.proj-card').forEach(upgradeTechSpans);
+
 // Formulário → WhatsApp
 function enviarWhatsApp(e) {
   e.preventDefault();
@@ -81,7 +154,7 @@ function abrirProjeto(id) {
   document.getElementById('modalLive').href  = p.live;
   document.getElementById('modalRepo').href  = p.repo;
   const techs = document.getElementById('modalTechs');
-  techs.innerHTML = p.techs.map(t => `<span>${t}</span>`).join('');
+  techs.innerHTML = p.techs.map(renderTechBadge).join('');
   document.getElementById('projModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
