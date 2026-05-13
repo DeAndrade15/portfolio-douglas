@@ -1,44 +1,27 @@
 // CURSOR PERSONALIZADO
-const cursorDot  = document.getElementById('cursorDot');
-const cursorRing = document.getElementById('cursorRing');
+const cursorEl = document.getElementById('cursorDot');
 
-if (cursorDot && cursorRing && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
-  let mx = 0, my = 0, rx = 0, ry = 0;
+if (cursorEl && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+  let mx = 0, my = 0, cx = 0, cy = 0;
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursorDot.style.left = mx + 'px';
-    cursorDot.style.top  = my + 'px';
-  });
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
   (function loop() {
-    rx += (mx - rx) * 0.13;
-    ry += (my - ry) * 0.13;
-    cursorRing.style.left = rx + 'px';
-    cursorRing.style.top  = ry + 'px';
+    cx += (mx - cx) * 0.18;
+    cy += (my - cy) * 0.18;
+    cursorEl.style.left = cx + 'px';
+    cursorEl.style.top  = cy + 'px';
     requestAnimationFrame(loop);
   })();
 
-  document.addEventListener('mousedown', () => cursorRing.classList.add('clicking'));
-  document.addEventListener('mouseup',   () => cursorRing.classList.remove('clicking'));
-  document.addEventListener('mouseleave', () => {
-    cursorDot.style.opacity  = '0';
-    cursorRing.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    cursorDot.style.opacity  = '1';
-    cursorRing.style.opacity = '1';
-  });
+  document.addEventListener('mousedown', () => cursorEl.classList.add('clicking'));
+  document.addEventListener('mouseup',   () => cursorEl.classList.remove('clicking'));
+  document.addEventListener('mouseleave', () => cursorEl.style.opacity = '0');
+  document.addEventListener('mouseenter', () => cursorEl.style.opacity = '1');
 
   document.querySelectorAll('a, button, .proj-card, [onclick], select, input, textarea, .proj-dot, .proj-modal-close').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursorDot.classList.add('hovering');
-      cursorRing.classList.add('hovering');
-    });
-    el.addEventListener('mouseleave', () => {
-      cursorDot.classList.remove('hovering');
-      cursorRing.classList.remove('hovering');
-    });
+    el.addEventListener('mouseenter', () => cursorEl.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => cursorEl.classList.remove('hovering'));
   });
 }
 
@@ -105,6 +88,12 @@ const fadeObserver = new IntersectionObserver((entries) => {
       setTimeout(() => {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
+        // remove inline styles after animation so CSS :hover can take over
+        setTimeout(() => {
+          entry.target.style.opacity = '';
+          entry.target.style.transform = '';
+          entry.target.style.transition = '';
+        }, 600);
       }, i * 80);
       fadeObserver.unobserve(entry.target);
     }
