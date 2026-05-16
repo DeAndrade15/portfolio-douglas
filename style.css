@@ -30,33 +30,29 @@ body {
 
 /* CURSOR PERSONALIZADO */
 @media (hover: hover) and (pointer: fine) {
-  *, a, button, [onclick], select, input, textarea { cursor: none !important; }
 
-  .cursor-dot {
-    position: fixed;
-    top: 0; left: 0;
-    width: 20px; height: 20px;
-    background: #fff;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
-    transition: width 0.25s cubic-bezier(0.34,1.56,0.64,1),
-                height 0.25s cubic-bezier(0.34,1.56,0.64,1),
-                opacity 0.2s;
-    will-change: left, top;
+  /* --- default: seta minimalista --- */
+  * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='20'%3E%3Cpath d='M2 1L2 17L6 13L9 19L11 18L8 12L13 12Z' fill='white' stroke='%23111827' stroke-width='1.1' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1, auto !important;
   }
 
-  .cursor-dot.hovering {
-    width: 36px;
-    height: 36px;
+  /* --- pointer: anel com ponto para clicáveis --- */
+  a, button, [onclick], .proj-card, .proj-dot,
+  .proj-modal-close, .btn-modal-live, .btn-modal-repo,
+  select, label, .sdot, .horario-btn, .back-btn {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Ccircle cx='11' cy='11' r='8' fill='none' stroke='white' stroke-width='1.4'/%3E%3Ccircle cx='11' cy='11' r='2.5' fill='white'/%3E%3C/svg%3E") 11 11, pointer !important;
   }
 
-  .cursor-dot.clicking {
-    width: 14px;
-    height: 14px;
+  /* --- text: I-beam para campos de texto --- */
+  input, textarea, [contenteditable] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='22'%3E%3Cpath d='M4 2h6M7 2v18M4 20h6' stroke='%23111827' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M4 2h6M7 2v18M4 20h6' stroke='white' stroke-width='1.2' stroke-linecap='round' fill='none'/%3E%3C/svg%3E") 7 11, text !important;
   }
+}
+
+/* seleção de texto */
+::selection {
+  background: rgba(79, 142, 247, 0.3);
+  color: #fff;
 }
 
 /* TECH BADGES */

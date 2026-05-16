@@ -1,29 +1,3 @@
-// CURSOR PERSONALIZADO
-const cursorEl = document.getElementById('cursorDot');
-
-if (cursorEl && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
-  let mx = 0, my = 0, cx = 0, cy = 0;
-
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-  (function loop() {
-    cx += (mx - cx) * 0.18;
-    cy += (my - cy) * 0.18;
-    cursorEl.style.left = cx + 'px';
-    cursorEl.style.top  = cy + 'px';
-    requestAnimationFrame(loop);
-  })();
-
-  document.addEventListener('mousedown', () => cursorEl.classList.add('clicking'));
-  document.addEventListener('mouseup',   () => cursorEl.classList.remove('clicking'));
-  document.addEventListener('mouseleave', () => cursorEl.style.opacity = '0');
-  document.addEventListener('mouseenter', () => cursorEl.style.opacity = '1');
-
-  document.querySelectorAll('a, button, .proj-card, [onclick], select, input, textarea, .proj-dot, .proj-modal-close').forEach(el => {
-    el.addEventListener('mouseenter', () => cursorEl.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => cursorEl.classList.remove('hovering'));
-  });
-}
 
 // TECH BADGES
 const techMap = {
