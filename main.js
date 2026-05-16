@@ -93,6 +93,16 @@ const projetos = {
     live: 'https://barberhub-production-a848.up.railway.app',
     repo: 'https://github.com/DeAndrade15/barberhub',
   },
+  quoteforge: {
+    nome: 'QuoteForge',
+    tag: 'IA / SaaS',
+    status: '● Live',
+    imagem: 'img/quoteforge-thumb.png',
+    descricao: 'Gerador de propostas comerciais profissionais usando inteligência artificial (Gemini). O usuário preenche dados do projeto e a IA cria uma proposta completa com escopo, cronograma, investimento e termos — pronta para enviar ao cliente. Inclui exportação para PDF.',
+    techs: ['React', 'TypeScript', 'Vite', 'Node.js', 'Express', 'Gemini AI'],
+    live: 'https://quoteforge-xi.vercel.app',
+    repo: 'https://github.com/DeAndrade15/quoteforge',
+  },
   patrickdaher: {
     nome: 'Patrick Daher',
     tag: 'Site Institucional',
