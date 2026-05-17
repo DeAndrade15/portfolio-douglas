@@ -83,6 +83,16 @@ fadeEls.forEach(el => {
 
 // Dados dos projetos
 const projetos = {
+  pulsemetrics: {
+    nome: 'PulseMetrics',
+    tag: 'SaaS / Gestão',
+    status: '● Live',
+    imagem: 'img/pulsemetrics-thumb.svg',
+    descricao: 'Plataforma SaaS multi-tenant de gestão pra vendedores autônomos. Sistema completo com dashboard financeiro (receita, contas a receber, devedores em destaque), CRUD de produtos com controle automático de estoque, registro de vendas linkadas a clientes reais com diferentes status de pagamento (pago, pendente, parcial, fiado), catálogo público compartilhável via slug, cobrança automatizada por WhatsApp com 4 templates editáveis, área administrativa pra gerenciar contas e planos, e segurança nível produção (senhas validadas contra HaveIBeenPwned, CAPTCHA, RLS, OAuth Google).',
+    techs: ['React', 'TypeScript', 'Vite', 'Supabase', 'PostgreSQL', 'Recharts', 'PWA'],
+    live: 'https://pulsemetrics-sable.vercel.app',
+    repo: 'https://github.com/DeAndrade15/pulsemetrics',
+  },
   barberhub: {
     nome: 'BarberHub',
     tag: 'Sistema Web',
