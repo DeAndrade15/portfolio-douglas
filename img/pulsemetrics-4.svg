@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0a0a0f"/>
+      <stop offset="1" stop-color="#111118"/>
+    </linearGradient>
+    <linearGradient id="greenBox" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#10b981"/>
+      <stop offset="1" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg4)"/>
+
+  <!-- header -->
+  <rect x="0" y="0" width="800" height="80" fill="#0e0e16"/>
+  <rect x="30" y="22" width="36" height="36" rx="9" fill="url(#greenBox)"/>
+  <text x="48" y="46" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="700" fill="#fff">P</text>
+  <text x="76" y="46" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="700" fill="#eef0f6">Perfumaria do João</text>
+  <text x="76" y="60" font-family="DM Sans, sans-serif" font-size="10" fill="#9999aa">Perfumes importados originais</text>
+
+  <!-- search -->
+  <rect x="540" y="28" width="220" height="32" rx="8" fill="#1a1a24" stroke="rgba(255,255,255,0.08)"/>
+  <text x="552" y="48" font-family="DM Sans, sans-serif" font-size="11" fill="#6b7084">🔍 Buscar produto...</text>
+
+  <!-- products grid -->
+  <g transform="translate(30, 110)">
+    <!-- product 1 -->
+    <rect width="170" height="180" rx="12" fill="#111118" stroke="rgba(255,255,255,0.06)"/>
+    <rect x="14" y="14" width="142" height="100" rx="8" fill="#2a2a3a"/>
+    <ellipse cx="85" cy="64" rx="20" ry="44" fill="#1a4a6a"/>
+    <ellipse cx="85" cy="44" rx="14" ry="6" fill="#0a2a4a"/>
+    <text x="14" y="134" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#eef0f6">Sauvage Dior</text>
+    <text x="14" y="150" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084">100ml • EDP</text>
+    <text x="14" y="172" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#10b981">R$ 450</text>
+    <rect x="100" y="158" width="56" height="20" rx="4" fill="#22c55e"/>
+    <text x="128" y="172" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#fff">WhatsApp</text>
+
+    <!-- product 2 -->
+    <g transform="translate(186, 0)">
+      <rect width="170" height="180" rx="12" fill="#111118" stroke="rgba(255,255,255,0.06)"/>
+      <rect x="14" y="14" width="142" height="100" rx="8" fill="#2a2a3a"/>
+      <ellipse cx="85" cy="64" rx="18" ry="42" fill="#3a3a3a"/>
+      <ellipse cx="85" cy="44" rx="12" ry="5" fill="#1a1a1a"/>
+      <text x="14" y="134" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#eef0f6">Bleu de Chanel</text>
+      <text x="14" y="150" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084">100ml • EDP</text>
+      <text x="14" y="172" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#10b981">R$ 680</text>
+      <rect x="100" y="158" width="56" height="20" rx="4" fill="#22c55e"/>
+      <text x="128" y="172" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#fff">WhatsApp</text>
+    </g>
+
+    <!-- product 3 -->
+    <g transform="translate(372, 0)">
+      <rect width="170" height="180" rx="12" fill="#111118" stroke="rgba(255,255,255,0.06)"/>
+      <rect x="14" y="14" width="142" height="100" rx="8" fill="#2a2a3a"/>
+      <ellipse cx="85" cy="64" rx="20" ry="44" fill="#ddccaa"/>
+      <ellipse cx="85" cy="44" rx="14" ry="6" fill="#aa9988"/>
+      <text x="14" y="134" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#eef0f6">Coco Mademoiselle</text>
+      <text x="14" y="150" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084">100ml • EDP</text>
+      <text x="14" y="172" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#10b981">R$ 520</text>
+      <rect x="100" y="158" width="56" height="20" rx="4" fill="#22c55e"/>
+      <text x="128" y="172" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#fff">WhatsApp</text>
+    </g>
+
+    <!-- product 4 -->
+    <g transform="translate(558, 0)">
+      <rect width="170" height="180" rx="12" fill="#111118" stroke="rgba(255,255,255,0.06)"/>
+      <rect x="14" y="14" width="142" height="100" rx="8" fill="#2a2a3a"/>
+      <ellipse cx="85" cy="64" rx="20" ry="44" fill="#1a4a6a"/>
+      <ellipse cx="85" cy="44" rx="14" ry="6" fill="#0a2a4a"/>
+      <text x="14" y="134" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#eef0f6">Acqua di Gio</text>
+      <text x="14" y="150" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084">100ml • EDT</text>
+      <text x="14" y="172" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#10b981">R$ 380</text>
+      <rect x="100" y="158" width="56" height="20" rx="4" fill="#22c55e"/>
+      <text x="128" y="172" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#fff">WhatsApp</text>
+    </g>
+  </g>
+
+  <!-- second row -->
+  <g transform="translate(30, 310)">
+    <rect width="170" height="170" rx="12" fill="#111118" stroke="rgba(255,255,255,0.06)"/>
+    <rect x="14" y="14" width="142" height="100" rx="8" fill="#2a2a3a"/>
+    <ellipse cx="85" cy="64" rx="20" ry="44" fill="#aa1144"/>
+    <text x="14" y="134" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#eef0f6">La Vie Est Belle</text>
+    <text x="14" y="150" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084">100ml • EDP</text>
+    <text x="14" y="162" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#10b981">R$ 590</text>
+
+    <g transform="translate(186, 0)">
+      <rect width="170" height="170" rx="12" fill="#111118" stroke="rgba(255,255,255,0.06)"/>
+      <rect x="14" y="14" width="142" height="100" rx="8" fill="#2a2a3a"/>
+      <ellipse cx="85" cy="64" rx="20" ry="44" fill="#5a3a1a"/>
+      <text x="14" y="134" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#eef0f6">Tom Ford Oud</text>
+      <text x="14" y="150" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084">50ml • EDP</text>
+      <text x="14" y="162" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#10b981">R$ 890</text>
+    </g>
+
+    <g transform="translate(372, 0)">
+      <rect width="170" height="170" rx="12" fill="#111118" stroke="rgba(255,255,255,0.06)"/>
+      <rect x="14" y="14" width="142" height="100" rx="8" fill="#2a2a3a"/>
+      <ellipse cx="85" cy="64" rx="18" ry="42" fill="#2a5a2a"/>
+      <text x="14" y="134" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#eef0f6">Polo Green</text>
+      <text x="14" y="150" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084">100ml • EDT</text>
+      <text x="14" y="162" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#10b981">R$ 320</text>
+    </g>
+
+    <g transform="translate(558, 0)">
+      <rect width="170" height="170" rx="12" fill="#111118" stroke="rgba(255,255,255,0.06)"/>
+      <rect x="14" y="14" width="142" height="100" rx="8" fill="#2a2a3a"/>
+      <ellipse cx="85" cy="64" rx="20" ry="44" fill="#cc7722"/>
+      <text x="14" y="134" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="#eef0f6">Eros Versace</text>
+      <text x="14" y="150" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084">100ml • EDT</text>
+      <text x="14" y="162" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#10b981">R$ 420</text>
+    </g>
+  </g>
+</svg>

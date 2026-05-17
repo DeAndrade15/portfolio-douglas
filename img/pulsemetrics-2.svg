@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0a0a0f"/>
+      <stop offset="1" stop-color="#111118"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg2)"/>
+
+  <!-- side nav -->
+  <rect x="0" y="0" width="56" height="500" fill="#0e0e16"/>
+  <rect x="14" y="20" width="28" height="28" rx="8" fill="#10b981"/>
+  <text x="28" y="40" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="700" fill="#fff">P</text>
+  <rect x="14" y="64" width="28" height="28" rx="6" fill="rgba(16,185,129,0.15)"/>
+  <circle cx="28" cy="78" r="3" fill="#10b981"/>
+  <rect x="14" y="104" width="28" height="28" rx="6" fill="transparent"/>
+  <rect x="14" y="144" width="28" height="28" rx="6" fill="transparent"/>
+
+  <!-- top bar -->
+  <text x="80" y="40" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#eef0f6">Vendas</text>
+  <text x="80" y="60" font-family="DM Sans, sans-serif" font-size="11" fill="#6b7084">Registre vendas e controle pagamentos dos clientes</text>
+
+  <!-- summary cards -->
+  <g transform="translate(80, 80)">
+    <rect width="160" height="74" rx="12" fill="#111118" stroke="rgba(255,255,255,0.06)"/>
+    <text x="14" y="22" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084" letter-spacing="1">TOTAL VENDAS</text>
+    <text x="14" y="50" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#eef0f6">R$ 15.730</text>
+
+    <rect x="170" width="160" height="74" rx="12" fill="#111118" stroke="rgba(16,185,129,0.25)"/>
+    <text x="184" y="22" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084" letter-spacing="1">RECEBIDO</text>
+    <text x="184" y="50" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#10b981">R$ 12.450</text>
+
+    <rect x="340" width="160" height="74" rx="12" fill="#111118" stroke="rgba(245,158,11,0.3)"/>
+    <text x="354" y="22" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084" letter-spacing="1">A RECEBER</text>
+    <text x="354" y="50" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#f59e0b">R$ 3.280</text>
+
+    <rect x="510" width="140" height="74" rx="12" fill="#111118" stroke="rgba(239,68,68,0.3)"/>
+    <text x="524" y="22" font-family="DM Sans, sans-serif" font-size="9" fill="#6b7084" letter-spacing="1">PENDENTES</text>
+    <text x="524" y="50" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#ef4444">7</text>
+  </g>
+
+  <!-- vendas card -->
+  <g transform="translate(80, 174)">
+    <rect width="650" height="296" rx="14" fill="#0e0e16" stroke="rgba(255,255,255,0.04)"/>
+    <text x="20" y="28" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#eef0f6">Vendas</text>
+    <rect x="556" y="14" width="80" height="24" rx="6" fill="#10b981"/>
+    <text x="596" y="30" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="#fff">+ Nova Venda</text>
+
+    <!-- table header -->
+    <line x1="0" y1="56" x2="650" y2="56" stroke="rgba(255,255,255,0.04)"/>
+    <text x="20" y="76" font-family="DM Sans, sans-serif" font-size="10" fill="#6b7084" letter-spacing="0.6">CÓDIGO</text>
+    <text x="100" y="76" font-family="DM Sans, sans-serif" font-size="10" fill="#6b7084" letter-spacing="0.6">CLIENTE</text>
+    <text x="220" y="76" font-family="DM Sans, sans-serif" font-size="10" fill="#6b7084" letter-spacing="0.6">PRODUTO</text>
+    <text x="340" y="76" font-family="DM Sans, sans-serif" font-size="10" fill="#6b7084" letter-spacing="0.6">VALOR</text>
+    <text x="420" y="76" font-family="DM Sans, sans-serif" font-size="10" fill="#6b7084" letter-spacing="0.6">DEVE</text>
+    <text x="490" y="76" font-family="DM Sans, sans-serif" font-size="10" fill="#6b7084" letter-spacing="0.6">STATUS</text>
+    <text x="580" y="76" font-family="DM Sans, sans-serif" font-size="10" fill="#6b7084" letter-spacing="0.6">AÇÕES</text>
+    <line x1="0" y1="86" x2="650" y2="86" stroke="rgba(255,255,255,0.04)"/>
+
+    <!-- row 1 -->
+    <text x="20" y="108" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#eef0f6">#ORD-4821</text>
+    <text x="100" y="108" font-family="DM Sans, sans-serif" font-size="11" fill="#eef0f6">Maria Silva</text>
+    <text x="220" y="108" font-family="DM Sans, sans-serif" font-size="10" fill="#9999aa">Perfume Sauvage</text>
+    <text x="340" y="108" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#eef0f6">R$ 450</text>
+    <text x="420" y="108" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#9999aa">—</text>
+    <rect x="488" y="98" width="50" height="16" rx="3" fill="rgba(16,185,129,0.15)"/>
+    <text x="513" y="109" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#10b981">PAGO</text>
+
+    <!-- row 2 -->
+    <text x="20" y="138" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#eef0f6">#ORD-4820</text>
+    <text x="100" y="138" font-family="DM Sans, sans-serif" font-size="11" fill="#eef0f6">João Pedro</text>
+    <text x="220" y="138" font-family="DM Sans, sans-serif" font-size="10" fill="#9999aa">Bleu de Chanel</text>
+    <text x="340" y="138" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#eef0f6">R$ 680</text>
+    <text x="420" y="138" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="700" fill="#f59e0b">R$ 680</text>
+    <rect x="488" y="128" width="56" height="16" rx="3" fill="rgba(245,158,11,0.15)"/>
+    <text x="516" y="139" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#f59e0b">PENDENTE</text>
+    <rect x="572" y="128" width="42" height="16" rx="3" fill="rgba(34,197,94,0.15)" stroke="rgba(34,197,94,0.35)"/>
+    <text x="593" y="139" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="8" font-weight="700" fill="#22c55e">COBRAR</text>
+
+    <!-- row 3 -->
+    <text x="20" y="168" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#eef0f6">#ORD-4819</text>
+    <text x="100" y="168" font-family="DM Sans, sans-serif" font-size="11" fill="#eef0f6">Ana Costa</text>
+    <text x="220" y="168" font-family="DM Sans, sans-serif" font-size="10" fill="#9999aa">Coco Mademoiselle</text>
+    <text x="340" y="168" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#eef0f6">R$ 520</text>
+    <text x="420" y="168" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="700" fill="#f59e0b">R$ 220</text>
+    <rect x="488" y="158" width="50" height="16" rx="3" fill="rgba(168,85,247,0.15)"/>
+    <text x="513" y="169" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#a855f7">PARCIAL</text>
+
+    <!-- row 4 -->
+    <text x="20" y="198" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#eef0f6">#ORD-4818</text>
+    <text x="100" y="198" font-family="DM Sans, sans-serif" font-size="11" fill="#eef0f6">Carlos Lima</text>
+    <text x="220" y="198" font-family="DM Sans, sans-serif" font-size="10" fill="#9999aa">Acqua di Gio</text>
+    <text x="340" y="198" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#eef0f6">R$ 380</text>
+    <text x="420" y="198" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="700" fill="#ef4444">R$ 380</text>
+    <rect x="488" y="188" width="60" height="16" rx="3" fill="rgba(239,68,68,0.15)"/>
+    <text x="518" y="199" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#ef4444">ATRASADO</text>
+    <rect x="572" y="188" width="42" height="16" rx="3" fill="rgba(34,197,94,0.15)" stroke="rgba(34,197,94,0.35)"/>
+    <text x="593" y="199" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="8" font-weight="700" fill="#22c55e">COBRAR</text>
+
+    <!-- row 5 -->
+    <text x="20" y="228" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#eef0f6">#ORD-4817</text>
+    <text x="100" y="228" font-family="DM Sans, sans-serif" font-size="11" fill="#eef0f6">Patricia M.</text>
+    <text x="220" y="228" font-family="DM Sans, sans-serif" font-size="10" fill="#9999aa">La Vie Est Belle</text>
+    <text x="340" y="228" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#eef0f6">R$ 590</text>
+    <text x="420" y="228" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#9999aa">—</text>
+    <rect x="488" y="218" width="50" height="16" rx="3" fill="rgba(16,185,129,0.15)"/>
+    <text x="513" y="229" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="#10b981">PAGO</text>
+  </g>
+</svg>

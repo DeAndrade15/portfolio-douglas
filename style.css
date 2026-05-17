@@ -1241,6 +1241,85 @@ h2.center { text-align: center; }
   .form-row { grid-template-columns: 1fr; }
 }
 
+/* ============ CARROSSEL DO MODAL ============ */
+.proj-modal-thumb { position: relative; overflow: hidden; }
+.proj-modal-thumb img {
+  width: 100%;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.carrossel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.carrossel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.carrossel-dot:hover { background: rgba(255, 255, 255, 0.6); }
+
+.carrossel-dot.active {
+  background: var(--accent);
+  transform: scale(1.4);
+}
+
+/* ============ MÉTRICAS TÉCNICAS ============ */
+.proj-modal-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 18px 0 4px;
+}
+
+.metric-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.metric-value {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.metric-label {
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 540px) {
+  .proj-modal-metrics { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* ============ CASE STUDY (modal de projetos) ============ */
 .proj-modal-case {
   margin-top: 8px;

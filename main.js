@@ -88,6 +88,18 @@ const projetos = {
     tag: 'SaaS Multi-tenant',
     status: '● Live',
     imagem: 'img/pulsemetrics-thumb.svg',
+    imagens: [
+      'img/pulsemetrics-1.svg',
+      'img/pulsemetrics-2.svg',
+      'img/pulsemetrics-3.svg',
+      'img/pulsemetrics-4.svg',
+    ],
+    metricas: [
+      { label: 'Linhas de código', value: '3.2k' },
+      { label: 'Componentes', value: '14' },
+      { label: 'Migrations SQL', value: '6' },
+      { label: 'Build time', value: '<1s' },
+    ],
     descricao: 'Plataforma SaaS de gestão financeira e operacional para vendedores autônomos — pensada inicialmente para um amigo que vende perfumes importados e perdia o controle do que clientes deviam.',
     problema: 'Vendedores autônomos perdem dinheiro porque controlam vendas em caderno ou WhatsApp. Não sabem quanto receberam vs quanto têm a receber, esquecem cobranças, perdem o histórico de estoque e não conseguem identificar quais produtos vendem mais.',
     solucao: 'Dashboard com KPIs financeiros em tempo real, registro de vendas linkado a produtos (com baixa automática de estoque) e a clientes reais (com histórico de pedidos e gasto total), sistema de cobrança via WhatsApp com 4 templates editáveis e variáveis dinâmicas, catálogo público compartilhável por slug, e painel admin para gerenciar contas e planos.',
@@ -114,6 +126,13 @@ const projetos = {
     tag: 'Sistema Web Completo',
     status: '● Live',
     imagem: 'img/barberhub-thumb.jpg',
+    imagens: ['img/barberhub-thumb.jpg', 'img/barberhub-2.jpg', 'img/barberhub-3.png'],
+    metricas: [
+      { label: 'Stack', value: 'Node + Express' },
+      { label: 'Endpoints REST', value: '12+' },
+      { label: 'Mobile-first', value: '✓' },
+      { label: 'Auth', value: 'JWT' },
+    ],
     descricao: 'Sistema completo de agendamento online para barbearias, com fluxo público mobile-first de 3 etapas e painel administrativo para o dono da barbearia.',
     problema: 'Barbearias dependem de WhatsApp e telefone pra agendar, o que gera ligações perdidas, horários conflitantes e zero histórico de cliente. Donos não têm visibilidade do faturamento ou de quem são seus melhores clientes.',
     solucao: 'Página pública mobile-first onde o cliente escolhe serviços (com cards e fotos), data e horário (disponibilidade calculada automaticamente em tempo real considerando duração dos serviços), e confirma com nome e WhatsApp. No backend, painel admin com dashboard, agenda, gestão de clientes e relatórios.',
@@ -136,6 +155,13 @@ const projetos = {
     tag: 'SaaS com IA',
     status: '● Live',
     imagem: 'img/quoteforge-thumb.png',
+    imagens: ['img/quoteforge-thumb.png'],
+    metricas: [
+      { label: 'IA', value: 'Gemini' },
+      { label: 'Arquitetura', value: '3 camadas' },
+      { label: 'Output', value: 'PDF' },
+      { label: 'Stack', value: 'React + Node' },
+    ],
     descricao: 'Gerador de propostas comerciais profissionais usando IA generativa. Arquitetura em três camadas: frontend React, backend Express e API isolada para integração com Gemini.',
     problema: 'Freelancers e pequenas agências perdem horas montando propostas comerciais do zero, com qualidade inconsistente e copy ruim. Templates prontos do Word não escalam e não personalizam por contexto.',
     solucao: 'O usuário preenche um formulário com dados do projeto (cliente, escopo, prazo, orçamento) e o sistema chama a API Gemini através de um backend intermediário, retornando uma proposta completa estruturada (escopo detalhado, cronograma, investimento, termos). Pode ser editada inline e exportada para PDF.',
@@ -157,6 +183,13 @@ const projetos = {
     tag: 'Site Institucional',
     status: '● Live',
     imagem: 'img/patrickdaher-thumb.png',
+    imagens: ['img/ptk-1.jpg', 'img/ptk-2.jpg', 'img/ptk-3.jpg'],
+    metricas: [
+      { label: 'Stack', value: 'React + TS' },
+      { label: 'Estilo', value: 'Tailwind' },
+      { label: 'Modo', value: 'Dark / Light' },
+      { label: 'IA', value: 'Gemini' },
+    ],
     descricao: 'Site institucional premium para Patrick Daher, especialista em marketing audiovisual. Apresenta portfólio de vídeos, artes e marcas atendidas com integração de IA.',
     problema: 'Profissional de audiovisual precisava de uma vitrine online que respeitasse a estética do trabalho dele (premium, com pretos profundos, animações cinematográficas) e fosse rápida o suficiente para carregar vídeos em qualidade alta sem travar.',
     solucao: 'Single-page application com lazy loading de vídeos, transições suaves entre seções, dark/light mode com persistência, e seção "Fale com a IA" usando Gemini pra responder dúvidas sobre os serviços. Projeto colaborativo onde fiquei responsável por arquitetura frontend e integração com a IA.',
@@ -174,11 +207,28 @@ const projetos = {
   }
 };
 
+// Estado do carrossel atual
+let carrosselState = { imgs: [], idx: 0, timer: null };
+
 function abrirProjeto(id) {
   const p = projetos[id];
   if (!p) return;
-  document.getElementById('modalImg').src     = p.imagem;
-  document.getElementById('modalImg').alt     = p.nome;
+
+  // CARROSSEL
+  const imgs = (p.imagens && p.imagens.length) ? p.imagens : [p.imagem];
+  carrosselState.imgs = imgs;
+  carrosselState.idx = 0;
+  renderCarrosselSlide();
+  renderCarrosselDots();
+  if (carrosselState.timer) clearInterval(carrosselState.timer);
+  if (imgs.length > 1) {
+    carrosselState.timer = setInterval(() => {
+      carrosselState.idx = (carrosselState.idx + 1) % imgs.length;
+      renderCarrosselSlide();
+      renderCarrosselDots();
+    }, 4000);
+  }
+
   document.getElementById('modalTag').textContent    = p.tag;
   document.getElementById('modalStatus').textContent = p.status;
   document.getElementById('modalNome').textContent   = p.nome;
@@ -188,22 +238,31 @@ function abrirProjeto(id) {
   const techs = document.getElementById('modalTechs');
   techs.innerHTML = p.techs.map(renderTechBadge).join('');
 
-  // Case study sections (problema / solução / features / desafios)
+  // MÉTRICAS técnicas
+  const metricsEl = document.getElementById('modalMetrics');
+  if (metricsEl) {
+    if (p.metricas && p.metricas.length) {
+      metricsEl.innerHTML = p.metricas.map(m => `
+        <div class="metric-card">
+          <span class="metric-value">${m.value}</span>
+          <span class="metric-label">${m.label}</span>
+        </div>`).join('');
+      metricsEl.style.display = '';
+    } else {
+      metricsEl.style.display = 'none';
+    }
+  }
+
+  // Case study sections
   const caseEl = document.getElementById('modalCase');
   if (caseEl) {
     let html = '';
-    if (p.problema) {
-      html += `<div class="case-section"><h4>Problema</h4><p>${p.problema}</p></div>`;
-    }
-    if (p.solucao) {
-      html += `<div class="case-section"><h4>Solução</h4><p>${p.solucao}</p></div>`;
-    }
+    if (p.problema)  html += `<div class="case-section"><h4>Problema</h4><p>${p.problema}</p></div>`;
+    if (p.solucao)   html += `<div class="case-section"><h4>Solução</h4><p>${p.solucao}</p></div>`;
     if (p.features && p.features.length) {
       html += `<div class="case-section"><h4>Principais funcionalidades</h4><ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul></div>`;
     }
-    if (p.desafios) {
-      html += `<div class="case-section"><h4>Desafios técnicos</h4><p>${p.desafios}</p></div>`;
-    }
+    if (p.desafios)  html += `<div class="case-section"><h4>Desafios técnicos</h4><p>${p.desafios}</p></div>`;
     caseEl.innerHTML = html;
   }
 
@@ -211,9 +270,48 @@ function abrirProjeto(id) {
   document.body.style.overflow = 'hidden';
 }
 
+function renderCarrosselSlide() {
+  const img = document.getElementById('modalImg');
+  if (!img) return;
+  const src = carrosselState.imgs[carrosselState.idx];
+  if (!src) return;
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = src;
+    img.style.opacity = '1';
+  }, 150);
+}
+
+function renderCarrosselDots() {
+  const dotsEl = document.getElementById('carrosselDots');
+  if (!dotsEl) return;
+  if (carrosselState.imgs.length <= 1) { dotsEl.innerHTML = ''; return; }
+  dotsEl.innerHTML = carrosselState.imgs.map((_, i) =>
+    `<button class="carrossel-dot ${i === carrosselState.idx ? 'active' : ''}" data-idx="${i}" aria-label="slide ${i+1}"></button>`
+  ).join('');
+  dotsEl.querySelectorAll('.carrossel-dot').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      carrosselState.idx = parseInt(btn.getAttribute('data-idx'), 10);
+      renderCarrosselSlide();
+      renderCarrosselDots();
+      // reseta o timer
+      if (carrosselState.timer) {
+        clearInterval(carrosselState.timer);
+        carrosselState.timer = setInterval(() => {
+          carrosselState.idx = (carrosselState.idx + 1) % carrosselState.imgs.length;
+          renderCarrosselSlide();
+          renderCarrosselDots();
+        }, 4000);
+      }
+    });
+  });
+}
+
 function fecharProjeto(e, force) {
   if (!force && e && e.target !== document.getElementById('projModal')) return;
   document.getElementById('projModal').classList.remove('open');
+  if (carrosselState.timer) { clearInterval(carrosselState.timer); carrosselState.timer = null; }
   setTimeout(() => { document.body.style.overflow = ''; }, 300);
 }
 
