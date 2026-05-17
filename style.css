@@ -1223,3 +1223,67 @@ h2.center { text-align: center; }
   .contato-form { padding: 24px 20px; }
   .form-row { grid-template-columns: 1fr; }
 }
+
+/* ============ CASE STUDY (modal de projetos) ============ */
+.proj-modal-case {
+  margin-top: 8px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.case-section h4 {
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(170, 59, 255, 0.08);
+  border-radius: 4px;
+  border: 1px solid rgba(170, 59, 255, 0.15);
+}
+
+.case-section p {
+  color: #c2c2cc;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.case-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 6px 18px;
+}
+
+.case-section ul li {
+  color: #c2c2cc;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
+}
+
+.case-section ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .case-section ul { grid-template-columns: 1fr; }
+  .case-section h4 { font-size: 0.68rem; }
+}

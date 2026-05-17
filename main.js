@@ -81,45 +81,94 @@ fadeEls.forEach(el => {
   fadeObserver.observe(el);
 });
 
-// Dados dos projetos
+// Dados dos projetos — case studies estruturados
 const projetos = {
   pulsemetrics: {
     nome: 'PulseMetrics',
-    tag: 'SaaS / Gestão',
+    tag: 'SaaS Multi-tenant',
     status: '● Live',
     imagem: 'img/pulsemetrics-thumb.svg',
-    descricao: 'Plataforma SaaS multi-tenant de gestão pra vendedores autônomos. Sistema completo com dashboard financeiro (receita, contas a receber, devedores em destaque), CRUD de produtos com controle automático de estoque, registro de vendas linkadas a clientes reais com diferentes status de pagamento (pago, pendente, parcial, fiado), catálogo público compartilhável via slug, cobrança automatizada por WhatsApp com 4 templates editáveis, área administrativa pra gerenciar contas e planos, e segurança nível produção (senhas validadas contra HaveIBeenPwned, CAPTCHA, RLS, OAuth Google).',
-    techs: ['React', 'TypeScript', 'Vite', 'Supabase', 'PostgreSQL', 'Recharts', 'PWA'],
+    descricao: 'Plataforma SaaS de gestão financeira e operacional para vendedores autônomos — pensada inicialmente para um amigo que vende perfumes importados e perdia o controle do que clientes deviam.',
+    problema: 'Vendedores autônomos perdem dinheiro porque controlam vendas em caderno ou WhatsApp. Não sabem quanto receberam vs quanto têm a receber, esquecem cobranças, perdem o histórico de estoque e não conseguem identificar quais produtos vendem mais.',
+    solucao: 'Dashboard com KPIs financeiros em tempo real, registro de vendas linkado a produtos (com baixa automática de estoque) e a clientes reais (com histórico de pedidos e gasto total), sistema de cobrança via WhatsApp com 4 templates editáveis e variáveis dinâmicas, catálogo público compartilhável por slug, e painel admin para gerenciar contas e planos.',
+    features: [
+      'Auth com email/senha + Google OAuth (PKCE flow)',
+      'Multi-tenant com isolamento via Row Level Security do Postgres',
+      'Dashboard com cards de Recebido / A Receber / Vendas e lista de devedores',
+      'Vendas linkadas a produtos com controle automático de estoque e vendidos',
+      'Cobrança via WhatsApp (link wa.me) com templates personalizáveis',
+      'Catálogo público com slug-based routing (/catalogo/:loja)',
+      'Painel admin: lista de contas, promoção/rebaixamento de plano',
+      'Plan limits (Starter/Business) com modal de upgrade',
+      'PWA instalável no celular',
+      'Validação de senha contra base do HaveIBeenPwned + CAPTCHA',
+    ],
+    desafios: 'Implementar segurança nível produção sem servidor próprio: combinei RLS do Supabase (isolamento por user_id), validação client-side de senhas vazadas usando k-anonymity (só envia 5 chars do hash SHA-1 — equivale ao Pro do Supabase, mas gratuito), CAPTCHA no signup e rotação de OAuth secret. Outro desafio foi o auto-update de estoque/contadores: ao criar/deletar uma venda, transações em cascata atualizam o produto vendido e os totais do cliente, mantendo consistência sem race conditions.',
+    techs: ['React 18', 'TypeScript', 'Vite', 'Supabase', 'PostgreSQL', 'Row Level Security', 'Recharts', 'Lucide Icons', 'PWA', 'Vercel'],
     live: 'https://pulsemetrics-sable.vercel.app',
     repo: 'https://github.com/DeAndrade15/pulsemetrics',
   },
+
   barberhub: {
     nome: 'BarberHub',
-    tag: 'Sistema Web',
+    tag: 'Sistema Web Completo',
     status: '● Live',
     imagem: 'img/barberhub-thumb.jpg',
-    descricao: 'Sistema de agendamento online para barbearias, com fluxo mobile-first em 3 etapas: escolha de serviços, seleção de data e horário, e confirmação com dados do cliente. Suporte a multi-serviços, cálculo automático de disponibilidade e painel admin completo com dashboard, agenda e gestão de clientes.',
-    techs: ['Node.js', 'Express', 'JavaScript', 'CSS', 'REST API', 'JWT'],
+    descricao: 'Sistema completo de agendamento online para barbearias, com fluxo público mobile-first de 3 etapas e painel administrativo para o dono da barbearia.',
+    problema: 'Barbearias dependem de WhatsApp e telefone pra agendar, o que gera ligações perdidas, horários conflitantes e zero histórico de cliente. Donos não têm visibilidade do faturamento ou de quem são seus melhores clientes.',
+    solucao: 'Página pública mobile-first onde o cliente escolhe serviços (com cards e fotos), data e horário (disponibilidade calculada automaticamente em tempo real considerando duração dos serviços), e confirma com nome e WhatsApp. No backend, painel admin com dashboard, agenda, gestão de clientes e relatórios.',
+    features: [
+      'Fluxo público em 3 steps com auto-cálculo de disponibilidade',
+      'Suporte a múltiplos serviços por agendamento (somatório de duração)',
+      'Painel admin com dashboard, agenda, clientes',
+      'Autenticação JWT para o admin',
+      'API REST documentada',
+      'Dark theme editorial premium',
+    ],
+    desafios: 'Calcular disponibilidade considerando duração variável dos serviços selecionados e bloqueando horários sobrepostos exigiu lógica de "slots disponíveis" que filtra a agenda contra os agendamentos existentes em tempo real conforme o cliente seleciona/desseleciona serviços. Também implementei rate limiting básico no endpoint de agendamento para evitar spam.',
+    techs: ['Node.js', 'Express', 'JavaScript', 'CSS3', 'REST API', 'JWT', 'Railway'],
     live: 'https://barberhub-production-a848.up.railway.app',
     repo: 'https://github.com/DeAndrade15/barberhub',
   },
+
   quoteforge: {
     nome: 'QuoteForge',
-    tag: 'IA / SaaS',
+    tag: 'SaaS com IA',
     status: '● Live',
     imagem: 'img/quoteforge-thumb.png',
-    descricao: 'Gerador de propostas comerciais profissionais usando inteligência artificial (Gemini). O usuário preenche dados do projeto e a IA cria uma proposta completa com escopo, cronograma, investimento e termos — pronta para enviar ao cliente. Inclui exportação para PDF.',
-    techs: ['React', 'TypeScript', 'Vite', 'Node.js', 'Express', 'Gemini AI'],
+    descricao: 'Gerador de propostas comerciais profissionais usando IA generativa. Arquitetura em três camadas: frontend React, backend Express e API isolada para integração com Gemini.',
+    problema: 'Freelancers e pequenas agências perdem horas montando propostas comerciais do zero, com qualidade inconsistente e copy ruim. Templates prontos do Word não escalam e não personalizam por contexto.',
+    solucao: 'O usuário preenche um formulário com dados do projeto (cliente, escopo, prazo, orçamento) e o sistema chama a API Gemini através de um backend intermediário, retornando uma proposta completa estruturada (escopo detalhado, cronograma, investimento, termos). Pode ser editada inline e exportada para PDF.',
+    features: [
+      'Geração via Gemini AI com prompts estruturados',
+      'Arquitetura separada em /api, /backend, /frontend',
+      'Editor inline da proposta gerada',
+      'Exportação para PDF preservando formatação',
+      'Modelos prontos por tipo de serviço',
+    ],
+    desafios: 'A separação em três camadas (frontend / backend / API isolada) foi feita pra esconder a chave da API do Gemini do cliente e permitir que o backend valide o input antes de gastar tokens. Implementei rate limiting por sessão e validação de schema do output da IA antes de devolver ao frontend, pra evitar respostas malformadas quebrarem o renderizador.',
+    techs: ['React', 'TypeScript', 'Vite', 'Node.js', 'Express', 'Gemini AI', 'Vercel'],
     live: 'https://quoteforge-xi.vercel.app',
     repo: 'https://github.com/DeAndrade15/quoteforge',
   },
+
   patrickdaher: {
     nome: 'Patrick Daher',
     tag: 'Site Institucional',
     status: '● Live',
     imagem: 'img/patrickdaher-thumb.png',
-    descricao: 'Site institucional para Patrick Daher, especialista em marketing e audiovisual. Apresenta portfólio de vídeos, artes e marcas atendidas, com design premium dark/light mode, animações fluidas e integração com IA Gemini. Projeto colaborativo.',
-    techs: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Express', 'Gemini AI'],
+    descricao: 'Site institucional premium para Patrick Daher, especialista em marketing audiovisual. Apresenta portfólio de vídeos, artes e marcas atendidas com integração de IA.',
+    problema: 'Profissional de audiovisual precisava de uma vitrine online que respeitasse a estética do trabalho dele (premium, com pretos profundos, animações cinematográficas) e fosse rápida o suficiente para carregar vídeos em qualidade alta sem travar.',
+    solucao: 'Single-page application com lazy loading de vídeos, transições suaves entre seções, dark/light mode com persistência, e seção "Fale com a IA" usando Gemini pra responder dúvidas sobre os serviços. Projeto colaborativo onde fiquei responsável por arquitetura frontend e integração com a IA.',
+    features: [
+      'Dark/light mode com persistência em localStorage',
+      'Lazy loading de vídeos com placeholder blur',
+      'Animações fluidas (Framer Motion / CSS transitions)',
+      'Chatbot integrado via Gemini sobre os serviços',
+      'Layout responsivo desktop/tablet/mobile',
+    ],
+    desafios: 'Carregar vídeos pesados sem matar performance no mobile exigiu poster frames, preload="metadata" e intersection observer pra só dar load nos vídeos quando entram na viewport. O dark/light mode foi feito via CSS variables com transição animada — não só toggle binário.',
+    techs: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Express', 'Gemini AI', 'Vercel'],
     live: 'https://opatrickdaher.vercel.app',
     repo: 'https://github.com/ptkdaherr/opatrickdaher',
   }
@@ -138,6 +187,26 @@ function abrirProjeto(id) {
   document.getElementById('modalRepo').href  = p.repo;
   const techs = document.getElementById('modalTechs');
   techs.innerHTML = p.techs.map(renderTechBadge).join('');
+
+  // Case study sections (problema / solução / features / desafios)
+  const caseEl = document.getElementById('modalCase');
+  if (caseEl) {
+    let html = '';
+    if (p.problema) {
+      html += `<div class="case-section"><h4>Problema</h4><p>${p.problema}</p></div>`;
+    }
+    if (p.solucao) {
+      html += `<div class="case-section"><h4>Solução</h4><p>${p.solucao}</p></div>`;
+    }
+    if (p.features && p.features.length) {
+      html += `<div class="case-section"><h4>Principais funcionalidades</h4><ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul></div>`;
+    }
+    if (p.desafios) {
+      html += `<div class="case-section"><h4>Desafios técnicos</h4><p>${p.desafios}</p></div>`;
+    }
+    caseEl.innerHTML = html;
+  }
+
   document.getElementById('projModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
